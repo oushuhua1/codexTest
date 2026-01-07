@@ -1,6 +1,8 @@
 # Codex Todo App
 
-Lightweight React + Vite todo list that runs entirely in the browser. Tasks persist in `localStorage`, so there is no backend to set up.
+Lightweight React + Vite todo list. By default it runs entirely in the browser and persists tasks in `localStorage`.
+
+This repo also includes an optional Node.js backend (`server/`) providing a REST API with file persistence + JWT auth.
 
 ## Features
 - Add, complete, and delete todos with filtering between active/completed
@@ -12,6 +14,17 @@ Lightweight React + Vite todo list that runs entirely in the browser. Tasks pers
 2. `npm install`
 3. `npm run dev`
 4. Open `http://localhost:5173`
+
+## Optional Backend (REST + JWT)
+1. `cp server/.env.example server/.env` (set `TODO_JWT_SECRET` to a long random string)
+2. `cd server`
+3. `npm run dev`
+
+Backend docs and API details: `server/README.md`
+
+## Connect Client → Backend
+1. `cp client/.env.example client/.env` (set `VITE_API_BASE`, default: `http://localhost:8787`)
+2. Restart `npm run dev` in `client/` if it was already running.
 
 ## Deploying to Vercel
 1. Push this project to GitHub (or another git host).
@@ -25,6 +38,7 @@ Lightweight React + Vite todo list that runs entirely in the browser. Tasks pers
 
 ## Project Structure
 - `client/` — React app source (all you need to run locally or deploy)
+- `server/` — Node backend API (optional)
 - `.gitignore` — Ignores build artifacts and dependency folders
 
 That’s it—the repository only contains the files required to develop and ship the todo app.
